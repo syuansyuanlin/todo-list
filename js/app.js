@@ -13,9 +13,11 @@ add.addEventListener("click", e => {
 
     let todo = document.createElement("div");
     todo.classList.add("todo");
-    let text = document.createElement("p");
     todo.classList.add("todo-text");
+    
+    let text = document.createElement("p");
     text.innerText = todoText;
+
     let time = document.createElement("p");
     time.classList.add("todo-time");
     time.innerText = todoMonth + "/" + todoDate; 
@@ -33,6 +35,12 @@ add.addEventListener("click", e => {
     let trashButton = document.createElement("button");
     trashButton.classList.add("trash");
     trashButton.innerHTML = '<i class="fa-solid fa-trash"></i>';
+    trashButton.addEventListener("click", event => {
+        // 刪除這個 todo
+        const parent = event.target.parentElement;
+        const section = parent.parentElement;
+        section.removeChild(parent);
+    })
     todo.appendChild(completeButton);
     todo.appendChild(trashButton);
 
